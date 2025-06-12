@@ -4,6 +4,12 @@ import requests from "@/utils/requests";
 import Head from "next/head";
 import { Movie } from "../typings"
 import Row from "@/components/Row";
+import useAuth from "@/hooks/useAuth";
+import { modalAtom } from "@/atoms/modalAtom";
+import Modal from "@/components/Modal";
+import React from "react";
+import { useAtomValue } from "jotai";
+
 
 interface Props {
   netflixOriginals: Movie[];
@@ -26,6 +32,11 @@ export default function Home({
   topRated,
   trendingNow,
 }: Props) {
+  const { loading } = useAuth()
+  const showModal = useAtomValue(modalAtom)
+
+  if (loading) return null
+
   return (
     <div
       className="relative h-screen bg-gradient-to-b lg:h-[140vh]"
@@ -49,7 +60,7 @@ export default function Home({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* Modal */}
+      {showModal && <Modal />}
     </div>
   );
 }

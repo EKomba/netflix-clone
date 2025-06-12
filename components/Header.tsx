@@ -1,3 +1,4 @@
+import useAuth from "@/hooks/useAuth";
 import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -5,26 +6,27 @@ import { useEffect, useState } from "react";
 /* eslint-disable @next/next/no-img-element */
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
-    // if scrolled vertically
+      // if scrolled vertically
       if (window.scrollY > 0) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-        window.removeEventListener('scroll', handleScroll)
-    }
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <header className={`${isScrolled && 'bg-[#141414]'}`}>
+    <header className={`${isScrolled && "bg-[#141414]"}`}>
       {/* left section */}
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
@@ -49,13 +51,14 @@ function Header() {
         <MagnifyingGlassIcon className="hidden h-6 w-6 sm:inline " />
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6" />
-        <Link href="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointer rounded"
-          />
-        </Link>
+        {/* <Link href="/account"> */}
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt="Netflix-logo"
+          className="cursor-pointer rounded"
+        />
+        {/* </Link> */}
       </div>
     </header>
   );
