@@ -11,11 +11,11 @@ import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { Element, Genre } from "@/typings";
 import ReactPlayer from "react-player/lazy";
-import { FaPlay, FaVolumeOff, FaVolumeUp } from "react-icons/fa";
+import { FaPlay} from "react-icons/fa";
 
 function Modal() {
   const [showModal, setShowModal] = useAtom(modalAtom);
-  const [movie, setMovie] = useAtom(movieAtom);
+  const [movie, /*setMovie*/] = useAtom(movieAtom);
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>();
   const [muted, setMuted] = useState(false);

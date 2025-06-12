@@ -13,8 +13,8 @@ interface Props {
 
 function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
-  const [showModal, setShowModal] = useAtom(modalAtom);
-  const [currentMovie, setCurrentMovie] = useAtom(movieAtom);
+  const [/*showModal*/, setShowModal] = useAtom(modalAtom);
+  const [/*currentMovie */, setCurrentMovie] = useAtom(movieAtom);
 
   useEffect(() => {
     setMovie(

@@ -10,8 +10,8 @@ interface Props {
 }
 
 function Thumbnail({movie}: Props) {
-  const [showModal, setShowModal] = useAtom(modalAtom);
-  const [currentMovie, setCurrentMovie] = useAtom(movieAtom);
+  const [/*showModal*/, setShowModal] = useAtom(modalAtom);
+  const [/*currentMovie*/, setCurrentMovie] = useAtom(movieAtom);
 
   return (
     <div
